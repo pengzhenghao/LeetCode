@@ -4,6 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        '''
         ans = 0
         sub = ''
         for c in s:
@@ -14,3 +15,20 @@ class Solution(object):
                     break
             sub += c
         return max(ans,len(sub))
+        '''
+        # DP solution
+        dic = [-1]*256
+        ans = left = 0
+        for right,c in enumerate(s):
+            left = max(dic[ord(c)]+1,left)
+            dic[ord(c)] = right
+            ans = max(ans,right-left+1)
+        return ans
+                
+            
+            
+            
+            
+            
+            
+            
